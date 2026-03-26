@@ -1,0 +1,16 @@
+[project]
+name = "whatsapp-ecom-bot"
+version = "0.1.0"
+description = "WhatsApp e-commerce customer support bot"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "python-dotenv",
+    "twilio",
+    "openai",
+    "redis[asyncio]",
+    "sqlalchemy[asyncio]",
+    "aiosqlite",
+    "httpx",
+]

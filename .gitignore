@@ -1,0 +1,25 @@
+# virtual environment
+.venv/
+
+# environment variables - never commit this
+.env
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# database files
+*.db
+*.sqlite3
+
+# uv
+.uv/
+
+# os
+.DS_Store
+Thumbs.db
+
+# ide
+.vscode/
+.idea/
