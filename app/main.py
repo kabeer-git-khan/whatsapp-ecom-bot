@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Form
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import Response
 from twilio.twiml.messaging_response import MessagingResponse
 
 from app.config import settings
@@ -12,7 +12,7 @@ async def health():
     return {"status": "ok", "bot": "whatsapp-ecom-bot"}
 
 
-@app.post("/webhook", response_class=PlainTextResponse)
+@app.post("/webhook")
 async def webhook(
     From: str = Form(...),
     Body: str = Form(...),
@@ -27,4 +27,4 @@ async def webhook(
     response = MessagingResponse()
     response.message(reply)
 
-    return str(response)
+    return Response(content=str(response), media_type="application/xml")
