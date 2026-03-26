@@ -13,4 +13,5 @@ dependencies = [
     "sqlalchemy[asyncio]",
     "aiosqlite",
     "httpx",
+    "python-multipart>=0.0.22",
 ]
