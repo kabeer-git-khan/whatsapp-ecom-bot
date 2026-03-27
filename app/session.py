@@ -1,8 +1,9 @@
 import json
 import redis.asyncio as aioredis
+from app.config import settings
 from app.database import save_messages, load_history
 
-REDIS_URL = "redis://localhost:6379"
+REDIS_URL = settings.redis_url
 SESSION_TTL = 86400
 
 redis_client = aioredis.from_url(REDIS_URL, decode_responses=True)
