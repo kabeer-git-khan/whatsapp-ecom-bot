@@ -10,6 +10,7 @@ class Settings:
     twilio_account_sid: str
     twilio_auth_token: str
     twilio_whatsapp_number: str
+    redis_url: str
 
 def get_settings() -> Settings:
     return Settings(
@@ -17,6 +18,7 @@ def get_settings() -> Settings:
         twilio_account_sid=os.getenv("TWILIO_ACCOUNT_SID", ""),
         twilio_auth_token=os.getenv("TWILIO_AUTH_TOKEN", ""),
         twilio_whatsapp_number=os.getenv("TWILIO_WHATSAPP_NUMBER", ""),
+        redis_url=os.getenv("REDIS_URL", "redis://localhost:6379"),
     )
 
 settings = get_settings()
