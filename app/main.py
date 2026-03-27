@@ -3,6 +3,8 @@ from fastapi.responses import Response
 from twilio.twiml.messaging_response import MessagingResponse
 
 from app.config import settings
+from app.prompt import build_messages
+from app.llm import get_reply
 
 app = FastAPI(title="WhatsApp E-commerce Bot")
 
@@ -20,11 +22,14 @@ async def webhook(
     phone = From
     user_message = Body.strip()
 
-    print(f"Message from {phone}: {user_message}")
+    print(f"[IN]  {phone}: {user_message}")
 
-    reply = f"Echo: {user_message}"
+    messages = build_messages([], user_message)
+    reply = await get_reply(messages)
 
-    response = MessagingResponse()
-    response.message(reply)
+    print(f"[OUT] {phone}: {reply}")
 
-    return Response(content=str(response), media_type="application/xml")
+    twiml = MessagingResponse()
+    twiml.message(reply)
+
+    return Response(content=str(twiml), media_type="application/xml")
